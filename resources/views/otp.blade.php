@@ -32,7 +32,8 @@
                     <p>Masukkan kode OTP 4 digit yang</p>
                     <p>telah terkirim ke nomor Anda</p>
                 </div>
-                <form>
+                <form method="post">
+                    @csrf
                     <div class="flex justify-center mt-12">
                         <input class="otp-input" type="text" name="digit1" maxlength="1" autofocus
                             oninput="moveToNext(this, 'digit2')">
@@ -45,7 +46,7 @@
                     <a class="block text-center text-gray-500 underline-offset-4 hover:underline mt-4" href="#">Kirim ulang OTP</a>
                     <button type="submit"
                         class="w-[450px] mt-12 bg-[#3988FF] text-white h-14 rounded-lg hover:opacity-80">
-                        <a href="/katalog">LANJUTKAN</a>
+                        LANJUTKAN
                     </button>
                 </form>
             </div>

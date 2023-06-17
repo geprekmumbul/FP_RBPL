@@ -12,7 +12,7 @@ class PICSeeder extends Seeder
     {
         for ($i = 1; $i <= 10; $i++){
             $pic = new PIC([
-                'NomorPIC' => fake()->unique()->phoneNumber(),
+                'NomorPIC' => fake()->unique()->e164PhoneNumber(),
                 'NamaPIC' => fake()->name('male')
             ]);
             $pic->save();

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,13 +14,32 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('registrasi');
+Route::get('/tes', function () {
+    return view('tes');
 });
 
-Route::get('/katalog', function () {
-    return view('katalog');
+
+Route::get('/', function () {
+    if(session('LoggedIn')) return redirect('/katalog');
+    return redirect('/login');
 });
+
+
+Route::get('/login', function () {
+    if(session('LoggedIn')) return redirect('/katalog');
+    return view('login');
+});
+
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/otp', [LoginController::class, 'otp']);
+Route::get('/otp', function () { return view('otp');});
+
+Route::get('/katalog'      , function () {return view('layanan');});
+Route::get('/venue'        , function () {return view('layanan');});
+Route::get('/catering'     , function () {return view('layanan');});
+Route::get('/decoration'   , function () {return view('layanan');});
+Route::get('/photography'  , function () {return view('layanan');});
+Route::get('/entertainment', function () {return view('layanan');});
 
 Route::get('/bayardp', function () {
     return view('bayardp');
@@ -33,16 +53,8 @@ Route::get('/booking', function () {
     return view('booking');
 });
 
-Route::get('/catering', function () {
-    return view('catering');
-});
-
 Route::get('/konfirmasidp', function () {
     return view('confirmdp');
-});
-
-Route::get('/dekorasi', function () {
-    return view('dekorasi');
 });
 
 Route::get('/downpayment', function () {
@@ -53,18 +65,10 @@ Route::get('/konfirmasipelunasan', function () {
     return view('confirmpelunasan');
 });
 
-Route::get('/otp', function () {
-    return view('otp');
-});
-
 Route::get('/keranjang', function () {
     return view('keranjang');
 });
 
 Route::get('/pelunasan', function () {
     return view('pelunasan');
-});
-
-Route::get('/venue', function () {
-    return view('venue');
 });

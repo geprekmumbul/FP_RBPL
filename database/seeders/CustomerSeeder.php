@@ -12,7 +12,7 @@ class CustomerSeeder extends Seeder
     {
         for ($i = 1; $i <= 10; $i++){
             $cust = new Customer([
-                'NomorCust' => fake()->unique()->phoneNumber(),
+                'NomorCust' => fake()->unique()->e164PhoneNumber(),
                 'NamaSuami' => fake()->name('male'),
                 'NamaIstri' => fake()->name('female'),
                 'Tanggal'   => fake()->date(),
