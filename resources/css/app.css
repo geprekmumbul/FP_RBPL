@@ -1,0 +1,107 @@
+    .venue .navbar {
+    position: absolute;
+    width: 25%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+
+    background: #F4E7E6;
+    }
+
+    .venue .navbar .optlist {
+    position: absolute;
+    width: 270px;
+    height: 350px;
+    left: 99px;
+    top: 365px;
+
+    }
+
+    .venue .header {
+    position: absolute;
+    width: 1128px;
+    height: 177px;
+    left: 618px;
+    top: 86px;
+
+    }
+
+    .venue .content #paketa {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 648px;
+    top: 388px;
+    }
+
+    .venue .content #paketb {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 881px;
+    top: 388px;
+    }
+
+    .venue .content #paketc {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 1114px;
+    top: 388px;
+    }
+
+    .venue .content #paketd {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 1347px;
+    top: 388px;
+    }
+
+    .venue .content #pakete {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 1580px;
+    top: 388px;
+    }
+
+    .venue .content #paketf {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 645px;
+    top: 698px;
+    }
+
+    .venue .content #paketg {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 878px;
+    top: 698px;
+    }
+
+    .venue .content #paketh {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 1111px;
+    top: 698px;
+    }
+
+    .venue .content #paketi {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 1344px;
+    top: 698px;
+    }
+
+    .venue .content #paketj {
+    position: absolute;
+    width: 165px;
+    height: 248px;
+    left: 1577px;
+    top: 698px;
+    }
