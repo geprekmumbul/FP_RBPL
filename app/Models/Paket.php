@@ -39,4 +39,12 @@ class Paket extends Model
         'Harga',
         'Rating'
     ];
+    public function customer(){
+        return $this->belongsToMany(
+            Customer::class,
+            'customer_paket',
+            'IdPaket',
+            'IdCust',
+        );
+    }
 }

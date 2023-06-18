@@ -10,6 +10,7 @@ class CustomerSeeder extends Seeder
 {
     public function run(): void
     {
+
         for ($i = 1; $i <= 10; $i++){
             $cust = new Customer([
                 'NomorCust' => fake()->unique()->e164PhoneNumber(),

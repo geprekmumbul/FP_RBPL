@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\KeranjangController;
 use App\Http\Controllers\LoginController;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,57 +20,49 @@ Route::get('/tes', function () {
     return view('tes');
 });
 
-
 Route::get('/', function () {
     if(session('LoggedIn')) return redirect('/katalog');
     return redirect('/login');
 });
-
+Route::get('/logout', function () {
+    session(['LoggedIn' => false]);
+    return redirect('/login');
+});
 
 Route::get('/login', function () {
     if(session('LoggedIn')) return redirect('/katalog');
     return view('login');
 });
 
+Route::post('/addtocart', [KeranjangController::class, 'addtocart'])->name('addtocart');
+
+
+
+
 Route::post('/login', [LoginController::class, 'login']);
 Route::post('/otp', [LoginController::class, 'otp']);
 Route::get('/otp', function () { return view('otp');});
 
-Route::get('/katalog'      , function () {return view('layanan');});
-Route::get('/venue'        , function () {return view('layanan');});
-Route::get('/catering'     , function () {return view('layanan');});
-Route::get('/decoration'   , function () {return view('layanan');});
-Route::get('/photography'  , function () {return view('layanan');});
-Route::get('/entertainment', function () {return view('layanan');});
+Route::get('/katalog'      , function () {return view('katalog');});
+Route::get('/venue'        , function () {return view('katalog');});
+Route::get('/catering'     , function () {return view('katalog');});
+Route::get('/decoration'   , function () {return view('katalog');});
+Route::get('/photography'  , function () {return view('katalog');});
+Route::get('/entertainment', function () {return view('katalog');});
 
-Route::get('/bayardp', function () {
-    return view('bayardp');
+Route::post('/settings' , [LoginController::class, 'update']);
+Route::get('/settings' , function () {return view('settings');});
+Route::get('/keranjang', function () {return view('keranjang');});
+Route::get('/bayar'    , function () {return view('bayar');});
+Route::get('/confirm'  , function () {
+    $cust = App\Models\Customer::where('IdCust', session('IdCust'))->first();
+    $id = $cust->IdCust;
+    $status = $cust->Status;
+    if($status == "AWAL"){
+        DB::update('update Customer set Status = ? where IdCust = ?',['DP', $id]);
+    } else if($status == 'DP') {
+        DB::update('update Customer set Status = ? where IdCust = ?',['LUNAS', $id]);
+    }
+    return view('confirm');
 });
 
-Route::get('/bayarpelunasan', function () {
-    return view('bayarpelunasan');
-});
-
-Route::get('/booking', function () {
-    return view('booking');
-});
-
-Route::get('/konfirmasidp', function () {
-    return view('confirmdp');
-});
-
-Route::get('/downpayment', function () {
-    return view('downpayment');
-});
-
-Route::get('/konfirmasipelunasan', function () {
-    return view('confirmpelunasan');
-});
-
-Route::get('/keranjang', function () {
-    return view('keranjang');
-});
-
-Route::get('/pelunasan', function () {
-    return view('pelunasan');
-});

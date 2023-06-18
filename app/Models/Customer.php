@@ -44,4 +44,12 @@ class Customer extends Model
         'Status',
         'IdPIC',
     ];
+    public function paket(){
+        return $this->belongsToMany(
+            Paket::class,
+            'customer_paket',
+            'IdCust',
+            'IdPaket',
+        );
+    }
 }

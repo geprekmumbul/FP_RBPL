@@ -22,11 +22,10 @@ return new class extends Migration
         });
         Schema::create('paket', function(Blueprint $table){
             $table->id('IdPaket');
-            $table->string('Layanan');
-            $table->string('NamaPaket');
-            $table->string('Deskripsi');
-            $table->integer('Harga');
-            $table->float('Rating');
+            $table->string('Layanan')->nullable();
+            $table->string('NamaPaket')->nullable();
+            $table->string('Deskripsi')->nullable();
+            $table->integer('Harga')->nullable();
         });
         Schema::create('customer', function(Blueprint $table){
             $table->id('IdCust');
@@ -36,17 +35,8 @@ return new class extends Migration
             $table->string('NamaIstri')->nullable();
             $table->string('Lokasi')->nullable();
             $table->string('Status');
-            $table->dateTime('Tanggal')->nullable();
+            $table->string('Tanggal')->nullable();
             $table->foreign('IdPIC')->references('IdPIC')->on('pic');
-        });
-        Schema::create('review', function(Blueprint $table){
-            $table->id('IdReview');
-            $table->unsignedBigInteger('IdPaket');
-            $table->unsignedBigInteger('IdCust');
-            $table->foreign('IdPaket')->references('IdPaket')->on('paket');
-            $table->foreign('IdCust')->references('IdCust')->on('customer');
-            $table->integer('Rating');
-            $table->text('Feedback');
         });
         Schema::create('transaksi', function(Blueprint $table){
             $table->id('IdTrsk');
@@ -55,6 +45,14 @@ return new class extends Migration
             $table->string('Jenis');
             $table->dateTime('Tanggal');
             $table->integer('Nominal');
+        });
+
+        Schema::create('customer_paket', function (Blueprint $table){
+            $table->id('IdCustPaket');
+            $table->unsignedBigInteger('IdCust');
+            $table->unsignedBigInteger('IdPaket');
+            $table->foreign('IdCust')->references('IdCust')->on('customer');
+            $table->foreign('IdPaket')->references('IdPaket')->on('paket');
         });
     }
 
